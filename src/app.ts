@@ -1,6 +1,6 @@
 import cors from "cors";
 import express, { Application, Request, Response } from "express";
-import router from "../src/app/routes";
+import router from "../src/app/routes/index";
 import os from "os";
 import sendResponse from "./utilities/sendResponse";
 import { handleErrors } from "./utilities/handleErrors";
@@ -40,10 +40,8 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api", router);
 
-
-
 app.use((req: Request, res: Response, next: Function) => {
-  sendResponse(res,false,"API not found");
+  sendResponse(res, false, "API not found");
 });
 
 app.use(handleErrors);
