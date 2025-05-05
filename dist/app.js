@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
-const routes_1 = __importDefault(require("../src/app/routes"));
+const index_1 = __importDefault(require("../src/app/routes/index"));
 const os_1 = __importDefault(require("os"));
 const sendResponse_1 = __importDefault(require("./utilities/sendResponse"));
 const handleErrors_1 = require("./utilities/handleErrors");
@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
         },
     });
 });
-app.use("/api", routes_1.default);
+app.use("/api", index_1.default);
 app.use((req, res, next) => {
     (0, sendResponse_1.default)(res, false, "API not found");
 });
