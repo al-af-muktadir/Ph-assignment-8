@@ -90,6 +90,7 @@ yarn build
 
 
 📊 Database Schema
+```
 Customer Table
 Field	Type	Description
 customerId	UUID	Unique identifier for the customer
@@ -112,6 +113,7 @@ serviceDate	DateTime	Date the service started
 completionDate	DateTime	Nullable. Date the service completed
 description	String	Details of service (e.g., oil change)
 status	String	Status: "pending", "in-progress", "done"
+```
 Error Handling
 The API implements standardized error responses:
 
