@@ -12,30 +12,53 @@ ORM: Prisma
 Deployment: Render
 Main Features : -
 Customer Management: Create, read, update, and delete customer information
+
 Bike Management: Track bikes associated with customers
+
 Service Records: Maintain detailed service history with status tracking
+
 Service Completion Tracking: Mark services as completed with timestamps
+
 Overdue Service Alerts: Identify services pending for more than 7 days
+
 📋 API's & Endpoints : -
 Customer Management
 Method	Endpoint	Description
+```bash
 POST	/api/customers	Create a new customer
+
 GET	/api/customers	Retrieve all customers
+
 GET	/api/customers/:id	Get a specific customer by ID
+
 PUT	/api/customers/:id	Update customer details
+
 DELETE	/api/customers/:id	Delete a customer
+
 Bike Management
+
 Method	Endpoint	Description
+
 POST :	/api/bikes	Add a new bike
+
 GET	: /api/bikes	Retrieve all bikes
+
 GET	 : /api/bikes/:id	Get a specific bike by ID
+
 Service Management
+
 Method	Endpoint	Description
+
 POST :	/api/services	Create a service record
 GET :	/api/services	Retrieve all service records
+
 GET :	/api/services/:id	Get a specific service record
+
 PUT :	/api/services/:id/complete	Mark a service as completed
+
 GET :	/api/services/status	Get overdue or pending services (older than 7 days)
+```
+
 📥 Installation & Setup
 Prerequisites
 Node.js (v16 or higher)
