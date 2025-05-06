@@ -20,11 +20,11 @@ function bootstrap() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             server = app_1.default.listen(port, () => {
-                console.log(`🚀 Application is running on port ${port}!  ✨  ⚡`);
+                console.log(`Application is running on port ${port}!`);
             });
         }
         catch (error) {
-            console.error("😈 Error during bootstrap:", error);
+            console.error("Error", error);
         }
     });
 }

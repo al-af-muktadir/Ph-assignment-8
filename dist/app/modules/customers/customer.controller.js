@@ -22,31 +22,26 @@ var __rest = (this && this.__rest) || function (s, e) {
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CustomerController = void 0;
 const catchAsync_1 = __importDefault(require("../../../utilities/catchAsync"));
 const sendResponse_1 = __importDefault(require("../../../utilities/sendResponse"));
 const customer_service_1 = require("./customer.service");
-class CustomerController {
-}
-exports.CustomerController = CustomerController;
-_a = CustomerController;
-CustomerController.createCustomer = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const createCustomer = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield customer_service_1.CustomerService.createCustomer(req.body);
     const { updatedAt, isDeleted } = result, data = __rest(result, ["updatedAt", "isDeleted"]);
     const trimmedData = Object.assign({}, data);
     (0, sendResponse_1.default)(res, true, "Customer created successfully", undefined, trimmedData);
 }));
-CustomerController.getAllCustomers = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const getAllCustomers = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield customer_service_1.CustomerService.getAllCustomers();
-    const filteredData = result.map((_b) => {
-        var { updatedAt, isDeleted } = _b, rest = __rest(_b, ["updatedAt", "isDeleted"]);
+    const filteredData = result.map((_a) => {
+        var { updatedAt, isDeleted } = _a, rest = __rest(_a, ["updatedAt", "isDeleted"]);
         return (Object.assign({}, rest));
     });
-    (0, sendResponse_1.default)(res, true, "Customers fetched successfully", undefined, filteredData);
+    (0, sendResponse_1.default)(res, true, "Customers Retrieved successfully", undefined, filteredData);
 }));
-CustomerController.getSingleCustomer = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const getSingleCustomer = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield customer_service_1.CustomerService.getSingleCustomer(req.params.id);
     if (!result) {
         throw new Error(`Customer could not found by this ${req.params.id}`);
@@ -55,13 +50,20 @@ CustomerController.getSingleCustomer = (0, catchAsync_1.default)((req, res) => _
     const trimmedData = Object.assign({}, data);
     (0, sendResponse_1.default)(res, true, "Customer fetched successfully", undefined, trimmedData);
 }));
-CustomerController.updateCustomer = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const updateCustomer = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield customer_service_1.CustomerService.updateCustomer(req.params.id, req.body);
     const { updatedAt, isDeleted } = result, data = __rest(result, ["updatedAt", "isDeleted"]);
     const trimmedData = Object.assign({}, data);
     (0, sendResponse_1.default)(res, true, "Customer updated successfully", undefined, trimmedData);
 }));
-CustomerController.deleteCustomer = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const deleteCustomer = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield customer_service_1.CustomerService.deleteCustomer(req.params.id);
     (0, sendResponse_1.default)(res, true, "Customer deleted successfully");
 }));
+exports.CustomerController = {
+    getAllCustomers,
+    getSingleCustomer,
+    deleteCustomer,
+    updateCustomer,
+    createCustomer,
+};

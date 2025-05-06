@@ -19,7 +19,7 @@ app.get("/", (req: Request, res: Response) => {
   const serverUptime = os.uptime();
   res.send({
     success: true,
-    message: "Welcome to NestNow Server",
+    message: "Hello",
     version: "1.0.0",
     clientDetails: {
       ipAddress: clientIp,
@@ -33,7 +33,7 @@ app.get("/", (req: Request, res: Response) => {
       )} minutes`,
     },
     developerContact: {
-      email: "rajib5570@gmail.com",
+      email: "izemidas@gmail.com",
     },
   });
 });

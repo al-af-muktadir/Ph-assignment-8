@@ -12,33 +12,29 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BikeService = void 0;
 const client_1 = require("../../../prisma/client");
 const customError_1 = require("../../../utilities/customError");
-class BikeService {
-    static createBike(payload) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const result = yield client_1.prisma.bike.create({
-                data: payload
-            });
-            return result;
-        });
+const createBike = (payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield client_1.prisma.bike.create({
+        data: payload,
+    });
+    return result;
+});
+const getAllBikes = () => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield client_1.prisma.bike.findMany();
+    return result;
+});
+const getSingleBike = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield client_1.prisma.bike.findUnique({
+        where: {
+            bikeId: id,
+        },
+    });
+    if (!result) {
+        throw new customError_1.StatusFullError("NotFoundError", `Bike not found with this id: ${id}`, false, 404);
     }
-    static getAllBikes() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const result = yield client_1.prisma.bike.findMany();
-            return result;
-        });
-    }
-    static getSingleBike(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const result = yield client_1.prisma.bike.findUnique({
-                where: {
-                    bikeId: id
-                }
-            });
-            if (!result) {
-                throw new customError_1.StatusFullError("NotFoundError", `Bike not found with this id: ${id}`, false, 404);
-            }
-            return result;
-        });
-    }
-}
-exports.BikeService = BikeService;
+    return result;
+});
+exports.BikeService = {
+    getAllBikes,
+    createBike,
+    getSingleBike,
+};

@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
     const serverUptime = os_1.default.uptime();
     res.send({
         success: true,
-        message: "Welcome to NestNow Server",
+        message: "Hello",
         version: "1.0.0",
         clientDetails: {
             ipAddress: clientIp,
@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
             uptime: `${Math.floor(serverUptime / 60 / 60)} hours ${Math.floor((serverUptime / 60) % 60)} minutes`,
         },
         developerContact: {
-            email: "rajib5570@gmail.com",
+            email: "izemidas@gmail.com",
         },
     });
 });

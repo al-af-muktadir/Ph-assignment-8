@@ -1,7 +1,6 @@
 import { Server } from "http";
 import app from "./app";
 
-
 let server: Server | null = null;
 
 const port = 5000;
@@ -9,10 +8,10 @@ const port = 5000;
 async function bootstrap() {
   try {
     server = app.listen(port, () => {
-      console.log(`🚀 Application is running on port ${port}!  ✨  ⚡`);
+      console.log(`Application is running on port ${port}!`);
     });
   } catch (error) {
-    console.error("😈 Error during bootstrap:", error);
+    console.error("Error", error);
   }
 }
 
